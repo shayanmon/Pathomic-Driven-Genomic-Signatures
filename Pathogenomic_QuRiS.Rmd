@@ -1,0 +1,67 @@
+---
+title: "A Pathogenomic Model for QuRiS in PTCs"
+author: "Shayan Monabbati"
+date: "`r Sys.Date()`"
+linkcolor: blue
+output:
+  rmdformats::readthedown:
+    highlight: kate
+    number_sections: true
+    code_folding: show
+---
+
+Packages used for the analysis.
+```{r initial_setup, cache=FALSE, message = FALSE, warning = FALSE}
+library(glmnet);library(survival);library(survminer);library(cvms);library(readxl); library(randomForestSRC); library(ggplot2); library(knitr); library(rmdformats); library(magrittr); library(zoo); library(caret); library(ggpubr); library(skimr); library(Hmisc); library(umap); library(Rtsne); library(Epi); library(vcd); library(tidyverse)
+```
+
+## R Markdown
+
+```{r load_genes}
+setwd("~/Documents/CCIPD/Thyroid")
+all_genes <- read.csv("FPKM_GeneName_THCA_Shayan.csv")
+associated_genes <- read_xlsx("Comparison_All_Classi_Foll.xlsx")
+```
+
+```{r read_gene_data}
+associated_genes <- associated_genes[,1]
+associated_genes <- rename(associated_genes, Genes = GeneName_All)
+temp <- all_genes
+temp <- rename(temp, Genes = GeneName)
+
+rownames(temp) <- substr(rownames(temp),1,12)
+all_genes <- all_genes[-1,]
+
+```
+
+```{r read_gene_data}
+GeneNames_Sign_Amino_acid_All_Samples <- read.csv("~/Documents/CCIPD/Thyroid/GeneNames_Sign_Amino_acid_All_Samples.txt", sep="")
+GeneNames_Sign_TCA_cycle_Subset_All_Samples <- read.csv("~/Documents/CCIPD/Thyroid/GeneNames_Sign_TCA_cycle_Subset_All_Samples.txt", sep="")
+
+# Load the associated genes
+associated_genes <- rbind(GeneNames_Sign_Amino_acid_All_Samples,GeneNames_Sign_TCA_cycle_Subset_All_Samples)
+associated_genes <- rename(associated_genes, GeneName = Genes)
+
+associated_genes <- merge(associated_genes,genes)
+
+# Clean up the gene data to make it appropriate for merging for pathomic features
+associated_genes <- t(associated_genes)
+colnames(associated_genes) <- associated_genes[1,]
+associated_genes <- associated_genes[-1,]
+rownames(associated_genes) <- substr(rownames(associated_genes),1,12)
+new_row_names <- gsub("\\.", "-", row.names(associated_genes))
+row.names(associated_genes) <- new_row_names
+associated_genes <- cbind(subj_id = row.names(associated_genes), associated_genes)
+rownames(associated_genes) <- NULL
+associated_genes <- as.data.frame(associated_genes)
+associated_genes[,2:length(associated_genes)] <- apply(associated_genes[,2:length(associated_genes)], 2, as.numeric)
+#associated_genes[,2:length(associated_genes)] <- scale(associated_genes[,2:length(associated_genes)])
+  
+# merge pathomic and genomic data
+#f_test <- f_test[, -c(482:489)]
+combined_train <- merge(train,associated_genes)
+combined_train[,(6:length(combined_train))] <- scale(combined_train[,(6:length(combined_train))])
+
+```
+
+

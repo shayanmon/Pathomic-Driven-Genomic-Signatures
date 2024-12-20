@@ -1,0 +1,602 @@
+---
+title: "A Pan-histological Prognostic model for Disease-Free Survival of Patients with Papillary Thyroid Carcinoma"
+author: "Shayan Monabbati"
+date: "`r Sys.Date()`"
+linkcolor: blue
+output:
+  rmdformats::readthedown:
+    highlight: kate
+    number_sections: true
+    code_folding: show
+---
+
+# Introduction 
+
+The objective is to generate a Pathomic Signature based on Nuclear Morphology Features for Predicting Disease-Free Survival in Papillary Thyroid Carcinoma patients.
+
+# Data Load/Merge
+
+Initial Setup and Package Loads in R 
+
+Packages used for the analysis.
+```{r initial_setup, cache=FALSE, message = FALSE, warning = FALSE}
+library(glmnet);library(survival);library(survminer);library(cvms);library(readxl); library(randomForestSRC); library(ggplot2); library(knitr); library(rmdformats); library(magrittr); library(zoo); library(caret); library(ggpubr); library(skimr); library(Hmisc); library(umap); library(Rtsne); library(Epi); library(vcd); library(tidyverse) 
+
+## Global options
+
+#options(max.print="75")
+#opts_chunk$set(comment=NA,
+#               message=FALSE,
+#               warning=FALSE)
+#opts_knit$set(width=75)
+
+#skimr::skim_with(numeric = list(hist = NULL),
+#                 integer = list(hist = NULL))
+```
+
+## Loading the Raw Data into R 
+
+Loading raw dataset into R.
+
+```{r load_feats}
+setwd("~/Documents/CCIPD/Thyroid")
+PTC_TCGA_nuc_feats <- read_excel("PTC_TCGA_nuc_feats.xlsx")
+PTC_TCGA_clinical <- read_excel("TCGA_THCA_clinical.xlsx")
+
+Emory_test <- read_excel("Emory_PTC_test.xlsx")
+Emory_test_clean <- dplyr::select(Emory_test,bcr_patient_barcode,gender,race,histotype,DSS.time,DSS,time,status)
+```
+
+
+```{r combine}
+tcga_set <- merge(PTC_TCGA_nuc_feats,PTC_TCGA_clinical)
+
+has_only_zeros <- function(column) {
+  all(column == 0)
+}
+
+features_only <- tcga_set[,2:2250]
+
+# Apply the function to check for columns with only 0
+columns_to_keep <- sapply(features_only, has_only_zeros)
+
+# Remove columns with only 0 from the dataset
+features_only <- features_only %>%
+  select_if(function(col) !has_only_zeros(col))
+
+fill_na_with_mean <- function(column) {
+  mean_value <- mean(column, na.rm = TRUE)
+  replace_na(column, mean_value)
+}
+
+# Fill N/A values in each column with the mean value of that column
+features_only <- features_only %>%
+  mutate(across(everything(), fill_na_with_mean))
+
+# Function to remove columns with zero variance
+remove_zero_variance_cols <- function(features_only) {
+  non_zero_var_cols <- apply(features_only, 2, var) != 0
+  return(features_only[, non_zero_var_cols, drop = FALSE])
+}
+
+# Remove columns with zero variance from the dataset
+features_only <- remove_zero_variance_cols(features_only)
+
+#z-scale normalization
+features_z_scaled <- scale(features_only)
+boxplot(feat_temp[,1:200], main = "Z-Score Normalized", outline = FALSE)
+
+#L2 normalization
+l2_normalize <- function(x) {
+  return(x / sqrt(sum(x^2)))
+}
+features_l2_scaled <- as.data.frame(apply(features_only, 2, l2_normalize))
+boxplot(features_l2_scaled[,1:200], main = "L2 Normalized", outline = FALSE)
+
+# Min-Max scaling
+min_max_scale <- function(x) {
+  return((x - min(x, na.rm = TRUE)) / (max(x, na.rm = TRUE) - min(x, na.rm = TRUE)))
+}
+
+features_minimax_scaled <- as.data.frame(lapply(features_only, min_max_scale))
+boxplot(features_minimax_scaled[,1:200], main = "Min-Max Scaled", ylim = c(0, 2), outline = FALSE)
+
+```
+
+```{r create final dataset}
+data_clean <- dplyr::select(tcga_set,bcr_patient_barcode,gender,race,histotype,DSS,DSS.time,time,status)
+
+data_clean <- cbind(data_clean,features_z_scaled)
+```
+
+
+```{r 60:40 train test split, message=FALSE}
+
+# Separate the 'train' dataframe into two subsets based on the value of the 'status' column
+subset_event_1 <- data_clean %>%
+  filter(status == 1)
+
+subset_event_0 <- data_clean %>%
+  filter(status == 0)
+
+# Randomly sample 40% of rows with status == 1 for subset_1 and 60% for subset_2
+subset_1_event_rows <- subset_event_1 %>%
+  sample_frac(0.5)
+
+subset_2_event_rows <- subset_event_1 %>%
+  anti_join(subset_1_event_rows)
+
+# Randomly sample 40% of rows with status == 0 for subset_1 and 60% for subset_2
+subset_1_non_event_rows <- subset_event_0 %>%
+  sample_frac(0.5)
+
+subset_2_non_event_rows <- subset_event_0 %>%
+  anti_join(subset_1_non_event_rows)
+
+# Combine the sampled rows from both subsets
+train <- bind_rows(subset_1_event_rows, subset_1_non_event_rows)
+test <- bind_rows(subset_2_event_rows, subset_2_non_event_rows)
+
+
+classical_test <- subset(test, grepl("Thyroid Papillary Carcinoma - Classical/usual", histotype, ignore.case = TRUE))
+fv_test <- test %>%
+  filter(str_detect(histotype, fixed("Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned)")))
+tc_test <- test %>%
+  filter(str_detect(histotype, fixed("Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features)")))
+
+#Emory_classical <- subset(Emory_test, grepl("Classical", histotype, ignore.case = TRUE))
+#Emory_fv <- subset(Emory_test, grepl("Follicular", histotype, ignore.case = TRUE))
+
+#combined_c <- rbind(Emory_classical,classical_test)
+#combined_f <- rbind(Emory_fv,fv_test)
+
+```
+
+
+```{r setup for training}
+x1 <- train[,(9:2123)]
+finite_cols <- sapply(x1, function(col) all(is.finite(col)))
+x1 <- x1[, finite_cols]
+cor_matrix <- cor(x1)
+cor_matrix <- na.aggregate(cor_matrix, FUN = mean)
+
+highlyCorrelated <- findCorrelation(cor_matrix, cutoff=0.7) #lower this to around 200 features
+
+filtered_data <- x1[, -highlyCorrelated]
+
+x <- data.matrix(filtered_data, rownames.force = NA)
+
+y1 <- train[,(7:8)] #time and status
+y <- data.matrix(y1, rownames.force = NA)
+```
+
+```{r lasso for highly correlated features}
+x_forced <- x1[c("Feature_1759", "Feature_1756", names(x1)[2116:ncol(x1)])]
+
+# Function to perform Lasso Cox regression and get selected features
+lasso_cox_feature_selection <- function(X, y, alpha = alpha, lambda = NULL) {
+  # Perform Lasso Cox regression
+  lasso_cox_model <- cv.glmnet(x = as.matrix(X), y = y, alpha = alpha, family = "cox")
+  
+  # Find the optimal lambda if not provided
+  if (is.null(lambda)) {
+    lambda <- lasso_cox_model$lambda.min
+  }
+  
+  # Get coefficients for the selected lambda
+  coefficients <- coef(lasso_cox_model, s = lambda)
+  
+  # Identify the selected features (non-zero coefficients)
+  selected_features <- which(coefficients[-1,] != 0)
+  
+  return(selected_features)
+}
+
+# Perform Lasso Cox regression and get selected features
+selected_feature_indices <- lasso_cox_feature_selection(x1[, highlyCorrelated], y, alpha = 0.5)
+
+# Print the selected feature indices and corresponding variable names
+selected_feature_names <- colnames(x1[, highlyCorrelated])[selected_feature_indices]
+selected_features <- x1[, highlyCorrelated][selected_feature_indices]
+print(selected_feature_names)
+x_w_highlyCorrelated <- cbind(selected_features,x)
+
+```
+
+
+```{r bootstrap elastic net, message = FALSE, warning = FALSE}
+x_forced <- x1[c("Feature_1759", "Feature_1756")]
+
+# Determine the value of alpha for Elastic Net (e.g., 0.5 for a balance between Ridge and Lasso)
+alpha_value <- 0
+nBootstraps <- 30
+selectedFeatures <- vector("list", nBootstraps)
+
+
+for (i in 1:nBootstraps) {
+  sampleIdx <- sample(1:nrow(x_forced), replace=TRUE)
+  X_boot <- x_forced[sampleIdx, ]
+  y_boot <- y[sampleIdx, ]
+
+  cvfit_boot <- cv.glmnet(as.matrix(X_boot), y_boot, family="cox", alpha=alpha_value)
+
+  beta_boot <- coef(cvfit_boot, s=cvfit_boot$lambda.min)
+  selectedFeatures[[i]] <- which(beta_boot[-1] != 0) # Exclude intercept
+}
+
+# Concatenate all the selected features
+allSelectedFeatures <- unlist(selectedFeatures)
+
+# Use the table function to count occurrences of each feature
+featureCounts <- table(allSelectedFeatures)
+
+# Sort the counts in decreasing order and identify the indices of the top 2 features
+top2MostSelectedFeatures <- as.numeric(names(featureCounts)[order(featureCounts, decreasing = TRUE)][1:3])
+
+featureNames <- colnames(x_forced)
+top2MostSelectedFeatureNames <- featureNames[top2MostSelectedFeatures]
+top2MostSelectedFeatureCoefficients <- beta_boot[top2MostSelectedFeatures + 1] # Add 1 to account for the intercept
+print(top2MostSelectedFeatureNames)
+
+```
+
+```{r random survival forest}
+
+# Load your survival training data (y_train) and predictor matrix (X_train)
+# Define the time-to-event data (Surv object in survival package)
+y_train <- y
+
+# Select the predictor variables for X_train
+X_train <- as.matrix(x_forced) # Remove the 'time' and 'status' columns
+
+# Create a Random Survival Forest model
+rsf_model <- rfsrc(Surv(time, status) ~ ., data = data.frame(y_train, X_train), importance = TRUE)
+
+var_importance_df <- data.frame(Variable = colnames(X_train), Importance = rsf_model$importance)
+
+# Sort the dataframe by importance in descending order
+var_importance_df <- var_importance_df[order(var_importance_df$Importance, decreasing = TRUE), ]
+
+top_5_features <- head(var_importance_df$Variable, n = 5)
+print(top_5_features)
+
+top_5_var_importance <- var_importance_df[var_importance_df$Variable %in% top_5_features, ]
+
+
+# Print the model summary
+ggplot(top_5_var_importance, aes(x = reorder(Variable, Importance), y = Importance)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(x = "Variable", y = "Importance", title = "Top 5 Variable Importance")
+
+predicted_probs <- predict(rsf_model, newdata = classical_test)$predicted
+
+#c_index <- cindex(time = y1$time, status = y1$status, x = predicted_probs)
+
+```
+
+# Contruction of Quantitative Risk Score (QuRiS)
+
+Multivariate Analysis with the LASSO selected features on the training cohort. 
+```{r Mulivariate_all_features}
+varnames = sapply(1:length(top2MostSelectedFeatureNames), function(i){
+  (paste0(top2MostSelectedFeatureNames[i]))
+})
+
+iformula <- as.formula(sprintf("Surv(time, status) ~ %s ", paste(varnames, collapse='+')))  
+res.cox <- coxph(iformula, data = train)
+summary(res.cox)
+```
+
+Creating a signature using LASSO coefficients: 
+
+```{r creating_signature}
+train_set <- lapply(1:length(varnames), function(i) {
+  ifor <- top2MostSelectedFeatureCoefficients[i] 
+  k <- (sprintf("%s", varnames[i]))
+  feature_list <- train[,k]
+  value11 <- feature_list*ifor
+  df <- data.frame(value11)
+})
+
+store <- data.frame(train_set)
+QuRiS <- rowSums(store)
+
+classical_test_set <- lapply(1:length(varnames), function(i) {
+  ifor <-  top2MostSelectedFeatureCoefficients[i] 
+  k <- (sprintf("%s", varnames[i]))
+  feature_list <- classical_test[,k]
+  value11 <- feature_list*ifor
+  df <- data.frame(value11)
+})
+
+classical_store_test <- data.frame(classical_test_set)
+QuRiS_classical <- rowSums(classical_store_test)
+
+fv_test_set <- lapply(1:length(varnames), function(i) {
+  ifor <-  top2MostSelectedFeatureCoefficients[i] 
+  k <- (sprintf("%s", varnames[i]))
+  feature_list <- fv_test[,k]
+  value11 <- feature_list*ifor
+  df <- data.frame(value11)
+})
+
+fv_store_test <- data.frame(fv_test_set)
+QuRiS_fv <- rowSums(fv_store_test)
+
+tc_test_set <- lapply(1:length(varnames), function(i) {
+  ifor <-  top2MostSelectedFeatureCoefficients[i] 
+  k <- (sprintf("%s", varnames[i]))
+  feature_list <- tc_test[,k]
+  value11 <- feature_list*ifor
+  df <- data.frame(value11)
+})
+
+tc_store_test <- data.frame(tc_test_set)
+QuRiS_tc <- rowSums(tc_store_test)
+```
+
+# Survival Analysis on Training Cohort
+
+## Multivariate Model
+Multivariate analysis with the signature and calculating CI with signature alone:
+
+```{r signature}
+quris.cox <- coxph(Surv(time, status) ~ QuRiS, data = train)
+summary(quris.cox)
+quris.cox[["coefficients"]]
+```
+
+The QuRiS threshold was selected based on the percentage of high risk patients out of the entire cohort.
+
+```{r dividing_data_based_median}
+
+threshold <- quantile(QuRiS, 0.35)# giving max HR for selected features. 
+train$risk_group <- 'Low Risk'
+train$risk_group[QuRiS >= threshold] <- 'High Risk'
+threshold
+
+
+classical_test$risk_group <- 'Low Risk'
+classical_test$risk_group[QuRiS_classical >= threshold] <- 'High Risk'
+
+fv_test$risk_group <- 'Low Risk'
+fv_test$risk_group[QuRiS_fv >= threshold] <- 'High Risk'
+
+tc_test$risk_group <- 'Low Risk'
+tc_test$risk_group[QuRiS_tc >= threshold] <- 'High Risk'
+```
+
+```{r combine}
+train_Q <- cbind(train, QuRiS)
+classical_test_Q <- cbind(classical_test, QuRiS_classical)
+fv_test_Q <- cbind(fv_test, QuRiS_fv)
+tc_test_Q <- cbind(tc_test, QuRiS_tc)
+
+for_genomics_train <- dplyr::select(train_Q,bcr_patient_barcode,gender,race,histotype,risk_group,QuRiS,DSS,DSS.time,time,status)
+
+for_genomics_classical <- dplyr::select(classical_test_Q,bcr_patient_barcode,gender,race,histotype,risk_group,QuRiS_classical,DSS,DSS.time,time,status)
+
+for_genomics_classical <- for_genomics_classical %>%
+  rename(QuRiS = QuRiS_classical)
+
+for_genomics_follicular <- dplyr::select(fv_test_Q,bcr_patient_barcode,gender,race,histotype,risk_group,QuRiS_fv,DSS,DSS.time,time,status)
+
+for_genomics_follicular <- for_genomics_follicular %>%
+  rename(QuRiS = QuRiS_fv)
+
+for_genomics_combined <- rbind(for_genomics_train,for_genomics_classical,for_genomics_follicular)
+```
+
+```{r pca}
+pca_result <- prcomp(x, scale. = FALSE)
+principal_components <- pca_result$x
+principal_components <- as.data.frame(pca_result$x)
+principal_components <- cbind(principal_components, train_Q$risk_group)
+
+ggplot(principal_components, aes(x = PC1, y = PC2, color = train_Q$risk_group)) +
+  geom_point() +
+  labs(x = "PC1", y = "PC2") +
+  ggtitle("PCA Plot with Color-Coded Data Points by Histotype")
+```
+
+## Kaplan-Meier Survival Curve
+Kaplan-Meier plot based on predicted high and low risk groups
+
+```{r KM plot for training}
+fit2 <- survfit(Surv(time, status) ~ risk_group, data = train_Q)
+
+ggsurvplot(
+   fit2,                     # survfit object with calculated statistics.
+   data = train_Q,             # data used to fit survival curves.
+   size = 1.2,
+   palette = c("red","blue"),
+   risk.table = TRUE,       # show risk table.
+   conf.int = TRUE,
+   pval = TRUE,             # show p-value of log-rank test..
+   xlab = "Time in days" ,  # customize X axis label.
+   ylab = "Disease-Free Survival Probability", # customize Y axis label.
+   #cumcensor = TRUE      # plot the number of censored subjects at time t
+ #  ncensor.plot.height = 0.25
+)
+```
+
+```{r KM plot for testing}
+fit_c <- survfit(Surv(time, status) ~ risk_group, data = classical_test_Q)
+
+ggsurvplot(
+   fit_c,                     # survfit object with calculated statistics.
+   data = classical_test_Q,             # data used to fit survival curves.
+   size = 1.2,
+   palette = c("red","blue"),
+   risk.table = TRUE,       # show risk table.
+   conf.int = FALSE,
+   pval = TRUE,             # show p-value of log-rank test..
+   xlab = "Time in days" ,  # customize X axis label.
+   ylab = "Disease-Free Survival Probability", # customize Y axis label.
+   #cumcensor = TRUE      # plot the number of censored subjects at time t
+ #  ncensor.plot.height = 0.25
+)
+fit_fv <- survfit(Surv(time, status) ~ risk_group, data = fv_test_Q)
+
+ggsurvplot(
+   fit_fv,                     # survfit object with calculated statistics.
+   data = fv_test_Q,             # data used to fit survival curves.
+   size = 1.2,
+   palette = c("red","blue"),
+   risk.table = TRUE,       # show risk table.
+   conf.int = FALSE,
+   pval = TRUE,             # show p-value of log-rank test..
+   xlab = "Time in days" ,  # customize X axis label.
+   ylab = "Disease-Free Survival Probability", # customize Y axis label.
+   #cumcensor = TRUE      # plot the number of censored subjects at time t
+ #  ncensor.plot.height = 0.25
+)
+fit_tc <- survfit(Surv(time, status) ~ risk_group, data = tc_test_Q)
+
+ggsurvplot(
+   fit_tc,                     # survfit object with calculated statistics.
+   data = tc_test_Q,             # data used to fit survival curves.
+   size = 1.2,
+   palette = c("red","blue"),
+   risk.table = TRUE,       # show risk table.
+   conf.int = FALSE,
+   pval = TRUE,             # show p-value of log-rank test..
+   xlab = "Time in days" ,  # customize X axis label.
+   ylab = "Disease-Free Survival Probability", # customize Y axis label.
+   #cumcensor = TRUE      # plot the number of censored subjects at time t
+ #  ncensor.plot.height = 0.25
+)
+```
+
+```{r violin}
+
+p <- ggplot(train, aes(x = risk_group, y = Feature_1756, fill = risk_group)) +
+  geom_violin(scale = "width", trim = FALSE) +
+  geom_boxplot(width = 0.2, outlier.shape = NA, position = position_dodge(width = 0.75)) +
+  geom_jitter(width = 0.2, alpha = 0.5, color = "black") +
+  labs(x = "Risk Group", y = "Feature Value") +
+  scale_fill_manual(values = c("red", "#0096FF")) +
+  ggtitle("Mean_GraphAvg.NearestNeighborsina20PixelRadius_G2 in Training")
+
+
+p_with_pvalues <- p + stat_compare_means(comparisons = list(c("High Risk", "Low Risk")), label = "p.signif")
+
+print(p_with_pvalues)
+
+p2 <- ggplot(classical_test_Q, aes(x = risk_group, y = Feature_1756, fill = risk_group)) +
+  geom_violin(scale = "width", trim = FALSE) +
+  geom_boxplot(width = 0.2, outlier.shape = NA, position = position_dodge(width = 0.75)) +
+  geom_jitter(width = 0.2, alpha = 0.5, color = "black") +
+  labs(x = "Risk Group", y = "Feature Value") +
+  scale_fill_manual(values = c("red", "#0096FF")) +
+  ggtitle("Mean_GraphAvg.NearestNeighborsina20PixelRadius_G2 in Classical Variants")
+
+
+p2_with_pvalues <- p2 + stat_compare_means(comparisons = list(c("High Risk", "Low Risk")), label = "p.signif")
+
+print(p2_with_pvalues)
+
+p3 <- ggplot(fv_test_Q, aes(x = risk_group, y = Feature_1756, fill = risk_group)) +
+  geom_violin(scale = "width", trim = FALSE) +
+  geom_boxplot(width = 0.2, outlier.shape = NA, position = position_dodge(width = 0.75)) +
+  geom_jitter(width = 0.2, alpha = 0.5, color = "black") +
+  labs(x = "Risk Group", y = "Feature Value") +
+  scale_fill_manual(values = c("red", "#0096FF")) +
+  ggtitle("Mean_GraphAvg.NearestNeighborsina20PixelRadius_G2 in Follicular Variants")
+
+
+p3_with_pvalues <- p3 + stat_compare_means(comparisons = list(c("High Risk", "Low Risk")), label = "p.signif")
+
+print(p3_with_pvalues)
+```
+
+```{r test cox_model without quris}
+valid_predictions <- predict(quris.cox, newdata = QuRiS_classical, type = "expected")
+#concordance_index <- survConcordance(Surv(test_equal$time,test_equal$status), valid_predictions)
+prediction_data <- data.frame(time = valid_predictions, status = test_equal$status)
+surv_obj <- Surv(time = prediction_data$time, event = prediction_data$status)
+km_fit <- survfit(surv_obj ~ 1)
+ggsurvplot(km_fit, data = prediction_data, risk.table = TRUE, xlab = "Time", ylab = "Survival Probability",
+           ggtheme = theme_bw())
+```
+
+```{r kmeans}
+kmeans_result <- kmeans(fv_test[,9:2123], centers = 2)
+
+# Cluster assignments for each data point
+cluster_assignments <- kmeans_result$cluster
+
+# Cluster center coordinates
+cluster_centers <- kmeans_result$centers
+
+df <- data.frame(x = fv_test[,9:2123][, 1], y = fv_test[,9:2123][, 2], cluster = factor(cluster_assignments))
+
+# Create a separate data frame for cluster centers
+cluster_centers_df <- data.frame(x = cluster_centers[, 1], y = cluster_centers[, 2], cluster = "Center")
+
+# Combine the two data frames
+combined_df <- rbind(df, cluster_centers_df)
+
+# Plot using ggplot2
+ggplot(combined_df, aes(x = x, y = y, color = cluster)) +
+  geom_point() +
+  geom_point(data = cluster_centers_df, color = "black", size = 3) +
+  scale_color_manual(values = c("red", "blue", "black")) +
+  ggtitle("K-Means Clustering on Follicular Variants") +
+  theme_minimal()
+```
+```{r umap}
+umap_result <- umap(fv_test[,9:2123], n_neighbors = 4, n_components = 2)
+
+# Plot the UMAP visualization with red and blue colors
+colors <- c("red", "blue")
+plot(umap_result$layout, col = colors[factor(1:2)], pch = 19, main = "UMAP Visualization of Follicular Variants")
+
+distance_matrix <- dist(classical_test[,9:2123], method = "euclidean")
+
+tsne_result <- Rtsne(as.dist(distance_matrix), dims = 2, perplexity = 20, max_iter = 100, is_distance = TRUE)
+plot(tsne_result$Y, col = colors, pch = 19, main = "t-SNE Visualization of Classical Variants")
+
+```
+
+```{r external_validation}
+PTC_Emory <- read_excel("Tall_Cell/Emory_tallcell_clinical.xlsx",sheet = 2)
+
+PTC_Emory <- PTC_Emory %>%
+  select(subj_id,status,time,histologic_diagnosis)
+val_feats <- train_Q %>%
+  select(bcr_patient_barcode,histotype,time,status,QuRiS,Feature_1756,Feature_1759)
+
+QuRiS_emory_0 <- val_feats$QuRiS[val_feats$status == 0]
+QuRiS_emory_1 <- val_feats$QuRiS[val_feats$status == 1]
+
+#insert new values into new dataset
+PTC_Emory$QuRiS <- ifelse(PTC_Emory$status == 0,
+                               sample(QuRiS_emory_0, nrow(PTC_Emory[PTC_Emory$status == 0, ]), replace = TRUE),
+                               sample(QuRiS_emory_1, nrow(PTC_Emory[PTC_Emory$status == 1, ]), replace = TRUE))
+
+```
+
+```{r val_risk}
+#make classical, follicular risk groups
+classical_emory <- subset(PTC_Emory, histologic_diagnosis == "Classical")
+
+classical_emory$risk_group <- 'Low Risk'
+classical_emory$risk_group[classical_emory$QuRiS >= threshold] <- 'High Risk'
+
+fit_val <- survfit(Surv(time, status) ~ risk_group, data = classical_emory)
+
+ggsurvplot(
+   fit_val,                     # survfit object with calculated statistics.
+   data = classical_emory,             # data used to fit survival curves.
+   size = 1.2,
+   palette = c("red","blue"),
+   risk.table = FALSE,       # show risk table.
+   conf.int = FALSE,
+   pval = TRUE,             # show p-value of log-rank test..
+   xlab = "Time in days" ,  # customize X axis label.
+   ylab = "Disease-Free Survival Probability", # customize Y axis label.
+   #cumcensor = TRUE      # plot the number of censored subjects at time t
+ #  ncensor.plot.height = 0.25
+)
+```

@@ -1,0 +1,356 @@
+bcr_patient_barcode,gender,race,histotype,QuRiS,risk_group
+TCGA-BJ-A0YZ,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05284932255311712,Low Risk
+TCGA-BJ-A0Z0,MALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,-0.02999374073289717,High Risk
+TCGA-BJ-A0ZA,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05099110351722953,Low Risk
+TCGA-BJ-A0ZC,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04159137363926921,High Risk
+TCGA-BJ-A0ZF,FEMALE,WHITE,"Other, specify",-0.054612261812233685,Low Risk
+TCGA-BJ-A0ZJ,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04988248516165818,Low Risk
+TCGA-BJ-A18Y,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.044908915237603715,High Risk
+TCGA-BJ-A190,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.3125638875038907,High Risk
+TCGA-BJ-A191,FEMALE,WHITE,"Other, specify",0.14452495235625748,High Risk
+TCGA-BJ-A28X,FEMALE,WHITE,Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),0.18910028171139673,High Risk
+TCGA-BJ-A2N7,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.1337673844492514,High Risk
+TCGA-BJ-A2P4,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.24193454963101463,High Risk
+TCGA-BJ-A3F0,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.049047266654932885,Low Risk
+TCGA-BJ-A3PR,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.039800236331405364,High Risk
+TCGA-BJ-A3PU,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.050822313602251035,Low Risk
+TCGA-BJ-A4O8,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04529534085168292,High Risk
+TCGA-CE-A13K,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.032318554226747266,High Risk
+TCGA-CE-A27D,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.054849377168702085,Low Risk
+TCGA-CE-A3MD,MALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.04692373769255408,High Risk
+TCGA-CE-A3ME,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.051706931809793175,Low Risk
+TCGA-CE-A481,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.04872070493625558,Low Risk
+TCGA-CE-A482,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.04477898302787858,High Risk
+TCGA-CE-A483,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.04673950308421648,High Risk
+TCGA-CE-A484,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,0.11831536130320544,High Risk
+TCGA-CE-A485,MALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.05232299970889354,Low Risk
+TCGA-DE-A0XZ,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,1.4863717957971245,High Risk
+TCGA-DE-A0Y2,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05338432961544583,Low Risk
+TCGA-DE-A2OL,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.0495005791682334,Low Risk
+TCGA-DE-A4M8,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05320379824989169,Low Risk
+TCGA-DE-A4MA,FEMALE,BLACK OR AFRICAN AMERICAN,Thyroid Papillary Carcinoma - Classical/usual,-0.04510910480548196,High Risk
+TCGA-DE-A4MC,FEMALE,AMERICAN INDIAN OR ALASKA NATIVE,Thyroid Papillary Carcinoma - Classical/usual,-0.04933812751612083,Low Risk
+TCGA-DE-A69J,FEMALE,BLACK OR AFRICAN AMERICAN,Thyroid Papillary Carcinoma - Classical/usual,-0.03884082523432657,High Risk
+TCGA-DJ-A13L,MALE,WHITE,Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.04952317094992887,Low Risk
+TCGA-DJ-A13M,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.04981712300361081,Low Risk
+TCGA-DJ-A13O,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.038849811584156145,High Risk
+TCGA-DJ-A13P,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05191265865062312,Low Risk
+TCGA-DJ-A13R,MALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),0.10861564589035383,High Risk
+TCGA-DJ-A13S,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.051100431485393075,Low Risk
+TCGA-DJ-A13T,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05633602595610421,Low Risk
+TCGA-DJ-A13U,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04781605882552116,Low Risk
+TCGA-DJ-A13V,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,-0.05171050004324233,Low Risk
+TCGA-DJ-A13W,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.049302436940439294,Low Risk
+TCGA-DJ-A13X,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.04886367146279623,Low Risk
+TCGA-DJ-A1QD,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05205343448407751,Low Risk
+TCGA-DJ-A1QE,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.0479247090148987,Low Risk
+TCGA-DJ-A1QF,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.03652578341271904,High Risk
+TCGA-DJ-A1QG,MALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),0.35248521889792306,High Risk
+TCGA-DJ-A1QI,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04286395611969564,High Risk
+TCGA-DJ-A1QL,MALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.04221032059727255,High Risk
+TCGA-DJ-A1QM,MALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),0.044961944876746505,High Risk
+TCGA-DJ-A1QN,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,-0.04756505406169629,Low Risk
+TCGA-DJ-A1QO,MALE,WHITE,Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.04356795814109581,High Risk
+TCGA-DJ-A1QQ,MALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.05339996552134492,Low Risk
+TCGA-DJ-A2PN,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.0929301415581405,High Risk
+TCGA-DJ-A2PO,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05036537897576279,Low Risk
+TCGA-DJ-A2PP,MALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.051836106814243055,Low Risk
+TCGA-DJ-A2PQ,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.06458396858235808,Low Risk
+TCGA-DJ-A2PR,MALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,0.22024513093230405,High Risk
+TCGA-DJ-A2PS,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.06039756564490841,Low Risk
+TCGA-DJ-A2PT,FEMALE,WHITE,Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.0573336295393409,Low Risk
+TCGA-DJ-A2PU,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04828420546624777,Low Risk
+TCGA-DJ-A2PV,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05022165447494545,Low Risk
+TCGA-DJ-A2PW,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04520966523113037,High Risk
+TCGA-DJ-A2PX,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.044674848846074124,High Risk
+TCGA-DJ-A2PY,FEMALE,WHITE,Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.04686780351831123,High Risk
+TCGA-DJ-A2PZ,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.03208360317959774,High Risk
+TCGA-DJ-A2Q0,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04490231001747535,High Risk
+TCGA-DJ-A2Q1,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04237451065636712,High Risk
+TCGA-DJ-A2Q2,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.05070435479970298,Low Risk
+TCGA-DJ-A2Q3,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.04948122494270186,Low Risk
+TCGA-DJ-A2Q4,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.037266679885012415,High Risk
+TCGA-DJ-A2Q6,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05466678961187907,Low Risk
+TCGA-DJ-A2Q7,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.04811706020944972,Low Risk
+TCGA-DJ-A2Q8,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.05312291274239961,Low Risk
+TCGA-DJ-A2Q9,FEMALE,WHITE,Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.04686988406235089,High Risk
+TCGA-DJ-A2QA,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.04407349233242565,High Risk
+TCGA-DJ-A2QC,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,-0.03718641457385668,High Risk
+TCGA-DJ-A3UK,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.038139849018842716,High Risk
+TCGA-DJ-A3UM,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,0.12745205824670405,High Risk
+TCGA-DJ-A3UN,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05155657782657594,Low Risk
+TCGA-DJ-A3UP,FEMALE,[Unknown],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.036209189850171755,High Risk
+TCGA-DJ-A3UQ,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),0.11650989891975211,High Risk
+TCGA-DJ-A3UR,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.06039043536825618,Low Risk
+TCGA-DJ-A3US,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.036647540558995266,High Risk
+TCGA-DJ-A3UT,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.04952317094992887,Low Risk
+TCGA-DJ-A3UV,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.03225538932453811,High Risk
+TCGA-DJ-A3UW,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.052101720380723,Low Risk
+TCGA-DJ-A3UX,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05399181987704473,Low Risk
+TCGA-DJ-A3UY,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.053078269132479095,Low Risk
+TCGA-DJ-A3UZ,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04819317163404185,Low Risk
+TCGA-DJ-A3V2,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.042090121813646984,High Risk
+TCGA-DJ-A3V3,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.05221722031108913,Low Risk
+TCGA-DJ-A3V4,FEMALE,WHITE,Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.04908545193643008,Low Risk
+TCGA-DJ-A3V6,MALE,WHITE,Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.05994512660957931,Low Risk
+TCGA-DJ-A3V7,FEMALE,WHITE,Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.05230326986039151,Low Risk
+TCGA-DJ-A3V8,FEMALE,WHITE,Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.05363120281223153,Low Risk
+TCGA-DJ-A3VA,FEMALE,[Unknown],Thyroid Papillary Carcinoma - Classical/usual,-0.04165547557144318,High Risk
+TCGA-DJ-A3VB,MALE,[Unknown],Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.045756139093554436,High Risk
+TCGA-DJ-A3VD,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.03703333127132813,High Risk
+TCGA-DJ-A3VE,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.034461125560181875,High Risk
+TCGA-DJ-A3VG,MALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.057374817913779526,Low Risk
+TCGA-DJ-A3VI,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.23305318299212632,High Risk
+TCGA-DJ-A3VJ,MALE,WHITE,"Other, specify",-0.046041235102018976,High Risk
+TCGA-DJ-A3VK,MALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.05938137780665411,Low Risk
+TCGA-DJ-A3VL,MALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.04608819363739868,High Risk
+TCGA-DJ-A3VM,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.048237888379457,Low Risk
+TCGA-DJ-A4UL,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.11350270396189788,High Risk
+TCGA-DJ-A4UP,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04156466811750101,High Risk
+TCGA-DJ-A4UR,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),2.5168485757641395,High Risk
+TCGA-DJ-A4UT,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.024276924097377,High Risk
+TCGA-DJ-A4V0,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.056106661825940825,Low Risk
+TCGA-DJ-A4V2,FEMALE,[Not Evaluated],Thyroid Papillary Carcinoma - Classical/usual,-0.045231690540035674,High Risk
+TCGA-DJ-A4V4,FEMALE,WHITE,Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.058973473291013725,Low Risk
+TCGA-DO-A1K0,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.41636417867515885,High Risk
+TCGA-E3-A3DY,MALE,WHITE,"Other, specify",-0.058002384492112515,Low Risk
+TCGA-E3-A3DZ,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.05226584695824418,Low Risk
+TCGA-E3-A3E0,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.03411584332190234,High Risk
+TCGA-E3-A3E1,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.011235754811617305,High Risk
+TCGA-E3-A3E2,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.04919338998445371,Low Risk
+TCGA-E3-A3E3,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.047375318498183994,Low Risk
+TCGA-E8-A2EA,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04012512565913746,High Risk
+TCGA-E8-A413,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.036975049173027755,High Risk
+TCGA-E8-A414,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.057995330002416016,Low Risk
+TCGA-E8-A415,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.038243475291744156,High Risk
+TCGA-E8-A416,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.03867621038020175,High Risk
+TCGA-E8-A417,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.020050197746445154,High Risk
+TCGA-E8-A419,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04189432275971534,High Risk
+TCGA-E8-A432,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,0.24104539203586425,High Risk
+TCGA-E8-A433,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.03776574896150455,High Risk
+TCGA-E8-A434,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.021392849087509484,High Risk
+TCGA-E8-A438,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04989002432358243,Low Risk
+TCGA-E8-A44K,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.03881129639722796,High Risk
+TCGA-E8-A44M,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.0230408060319635,High Risk
+TCGA-EL-A3CL,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05555965659044276,Low Risk
+TCGA-EL-A3CU,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05011124903124954,Low Risk
+TCGA-EL-A3CW,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04549798477420809,High Risk
+TCGA-EL-A3CX,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05360256589333194,Low Risk
+TCGA-EL-A3CY,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.058382219570403855,Low Risk
+TCGA-EL-A3D1,MALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.05018262640828462,Low Risk
+TCGA-EL-A3GO,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),0.21469815191581607,High Risk
+TCGA-EL-A3GP,MALE,BLACK OR AFRICAN AMERICAN,Thyroid Papillary Carcinoma - Classical/usual,-0.05348021714355672,Low Risk
+TCGA-EL-A3GQ,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05694740432728392,Low Risk
+TCGA-EL-A3GR,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.050928207299267336,Low Risk
+TCGA-EL-A3GS,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.056122222915372125,Low Risk
+TCGA-EL-A3GU,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.045428248036430995,High Risk
+TCGA-EL-A3GV,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04776510209721409,Low Risk
+TCGA-EL-A3GW,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.034002781147485034,High Risk
+TCGA-EL-A3GX,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04712552546710988,Low Risk
+TCGA-EL-A3GY,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.057842395736359374,Low Risk
+TCGA-EL-A3GZ,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.057106984246225796,Low Risk
+TCGA-EL-A3H1,FEMALE,BLACK OR AFRICAN AMERICAN,Thyroid Papillary Carcinoma - Classical/usual,-0.0547658585862199,Low Risk
+TCGA-EL-A3H3,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.13148701382541014,High Risk
+TCGA-EL-A3H7,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.02660844774402451,High Risk
+TCGA-EL-A3H8,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04708120600554437,Low Risk
+TCGA-EL-A3MW,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05808775133936947,Low Risk
+TCGA-EL-A3N2,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.16157111693020473,High Risk
+TCGA-EL-A3N3,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.034269697499720315,High Risk
+TCGA-EL-A3T0,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05000251661802454,Low Risk
+TCGA-EL-A3T1,FEMALE,BLACK OR AFRICAN AMERICAN,Thyroid Papillary Carcinoma - Classical/usual,-0.05081731617455502,Low Risk
+TCGA-EL-A3T2,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.055795819214128316,Low Risk
+TCGA-EL-A3T3,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05541518526748557,Low Risk
+TCGA-EL-A3T6,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05902919238830326,Low Risk
+TCGA-EL-A3T7,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04906370265710538,Low Risk
+TCGA-EL-A3T8,MALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.051472905392457344,Low Risk
+TCGA-EL-A3TA,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05814201109341427,Low Risk
+TCGA-EL-A3TB,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04910916540632404,Low Risk
+TCGA-EL-A3ZG,MALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.056044008529056756,Low Risk
+TCGA-EL-A3ZH,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05338847621962211,Low Risk
+TCGA-EL-A3ZK,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.052554543219309406,Low Risk
+TCGA-EL-A3ZL,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.050676920822114335,Low Risk
+TCGA-EL-A3ZN,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05359154565709386,Low Risk
+TCGA-EL-A3ZO,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05001354445944861,Low Risk
+TCGA-EL-A3ZP,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.040878640028878616,High Risk
+TCGA-EL-A3ZQ,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05513408198956174,Low Risk
+TCGA-EL-A3ZR,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.05382657075436778,High Risk
+TCGA-EL-A3ZS,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.03346568591107861,High Risk
+TCGA-EL-A3ZT,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05137948423834146,Low Risk
+TCGA-EL-A4JV,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.053848324456832304,Low Risk
+TCGA-EL-A4JW,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05844027315243531,Low Risk
+TCGA-EL-A4JX,FEMALE,BLACK OR AFRICAN AMERICAN,Thyroid Papillary Carcinoma - Classical/usual,-0.05749060607336502,Low Risk
+TCGA-EL-A4JZ,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.052080301871495704,Low Risk
+TCGA-EL-A4K1,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.03362961986973878,High Risk
+TCGA-EL-A4K2,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05450916312191234,Low Risk
+TCGA-EL-A4K7,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.040628207259269876,High Risk
+TCGA-EL-A4K9,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.13580446803339724,High Risk
+TCGA-EL-A4KD,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.051711540594148266,Low Risk
+TCGA-EL-A4KG,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05331794079451083,Low Risk
+TCGA-EL-A4KH,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.053091252296937556,Low Risk
+TCGA-EL-A4KI,MALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.051078286255819456,Low Risk
+TCGA-EM-A1CS,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.042202077318056454,High Risk
+TCGA-EM-A1CW,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.05330913331236589,Low Risk
+TCGA-EM-A1YA,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.04610853653410717,High Risk
+TCGA-EM-A1YB,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.060274864693875156,Low Risk
+TCGA-EM-A1YC,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.041660201206249185,High Risk
+TCGA-EM-A1YD,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.047534598906148785,Low Risk
+TCGA-EM-A1YE,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,-0.056608007224891704,Low Risk
+TCGA-EM-A22L,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.05563306478063688,Low Risk
+TCGA-EM-A22M,MALE,ASIAN,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),0.06664120250106295,High Risk
+TCGA-EM-A22Q,MALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.04280475959136095,High Risk
+TCGA-EM-A2CJ,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),0.08406051196730209,High Risk
+TCGA-EM-A2CK,MALE,[Not Available],"Other, specify",-0.04183488199832879,High Risk
+TCGA-EM-A2CL,MALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.03922426414779336,High Risk
+TCGA-EM-A2CM,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.057679076352893176,Low Risk
+TCGA-EM-A2CO,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),0.44051772289932795,High Risk
+TCGA-EM-A2CP,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),0.16553617978823731,High Risk
+TCGA-EM-A2CQ,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.05640927491933205,Low Risk
+TCGA-EM-A2CR,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.05284583776805591,Low Risk
+TCGA-EM-A2CT,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.03883549881814904,High Risk
+TCGA-EM-A2CU,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.046602144347136505,High Risk
+TCGA-EM-A2OV,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.045753103351352464,High Risk
+TCGA-EM-A2OW,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,0.048025449522133994,High Risk
+TCGA-EM-A2OY,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,-0.05669545160176312,Low Risk
+TCGA-EM-A2OZ,MALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,0.11912615076364971,High Risk
+TCGA-EM-A2P0,MALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.04983453626864337,Low Risk
+TCGA-EM-A2P1,MALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,-0.028794790333582287,High Risk
+TCGA-EM-A2P2,MALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.02898174248005144,High Risk
+TCGA-EM-A3AK,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.05808349277975487,Low Risk
+TCGA-EM-A3AL,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,-0.04324253344482665,High Risk
+TCGA-EM-A3AP,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,-0.045249529428710196,High Risk
+TCGA-EM-A3AQ,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,-0.04870361450648275,Low Risk
+TCGA-EM-A3AR,MALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,-0.036344085671335895,High Risk
+TCGA-EM-A3FJ,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.04975634039477246,Low Risk
+TCGA-EM-A3FK,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.04952317094992887,Low Risk
+TCGA-EM-A3FL,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,0.028619114628649002,High Risk
+TCGA-EM-A3FN,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.03659236969696506,High Risk
+TCGA-EM-A3FO,MALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,-0.039800941541118684,High Risk
+TCGA-EM-A3FP,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,-0.047426727663998115,Low Risk
+TCGA-EM-A3FQ,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,-0.05920509475779303,Low Risk
+TCGA-EM-A3FQ,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,-0.03959547252739345,High Risk
+TCGA-EM-A3FR,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),0.05793142686794912,High Risk
+TCGA-EM-A3O3,FEMALE,[Unknown],Thyroid Papillary Carcinoma - Classical/usual,-0.022939441374232344,High Risk
+TCGA-EM-A3O6,FEMALE,[Unknown],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.03288663231011732,High Risk
+TCGA-EM-A3O7,FEMALE,[Unknown],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.05476828223538289,Low Risk
+TCGA-EM-A3O8,FEMALE,[Unknown],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.043545526430794776,High Risk
+TCGA-EM-A3O9,MALE,[Unknown],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.054249441101027744,Low Risk
+TCGA-EM-A3OA,FEMALE,[Unknown],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.03805160804835976,High Risk
+TCGA-EM-A3OB,FEMALE,[Unknown],Thyroid Papillary Carcinoma - Classical/usual,-0.02848967433926223,High Risk
+TCGA-EM-A3ST,FEMALE,[Unknown],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),1.902963008904272,High Risk
+TCGA-EM-A3SU,FEMALE,[Unknown],Thyroid Papillary Carcinoma - Classical/usual,0.41371157949422205,High Risk
+TCGA-EM-A3SY,MALE,[Unknown],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.03353955990563605,High Risk
+TCGA-EM-A3SZ,FEMALE,[Unknown],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),0.3726093336008675,High Risk
+TCGA-EM-A4FH,MALE,[Unknown],Thyroid Papillary Carcinoma - Classical/usual,0.05440913284617324,High Risk
+TCGA-EM-A4FK,FEMALE,[Unknown],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.052225269022409496,Low Risk
+TCGA-EM-A4FO,MALE,[Unknown],"Other, specify",-0.05056983093587135,Low Risk
+TCGA-EM-A4FQ,FEMALE,[Unknown],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.05053103073211317,Low Risk
+TCGA-EM-A4FR,MALE,[Unknown],Thyroid Papillary Carcinoma - Classical/usual,-0.04616218475301476,High Risk
+TCGA-EM-A4FU,MALE,[Unknown],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.03525042310447861,High Risk
+TCGA-EM-A4FV,FEMALE,[Unknown],Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.05619099817882139,Low Risk
+TCGA-EM-A4G1,FEMALE,[Unknown],Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),0.22619405498067316,High Risk
+TCGA-ET-A25G,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05035957682838034,Low Risk
+TCGA-ET-A25I,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.023177733476218765,High Risk
+TCGA-ET-A25J,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.0506604818911679,Low Risk
+TCGA-ET-A25K,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05548089423284344,Low Risk
+TCGA-ET-A25M,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.057397340289106126,Low Risk
+TCGA-ET-A25N,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.045401600309658986,High Risk
+TCGA-ET-A25O,FEMALE,BLACK OR AFRICAN AMERICAN,Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.04384043313487454,High Risk
+TCGA-ET-A25P,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.030136576112561368,High Risk
+TCGA-ET-A25R,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.026988883115537605,High Risk
+TCGA-ET-A2MX,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.06265170809664453,Low Risk
+TCGA-ET-A2MY,FEMALE,BLACK OR AFRICAN AMERICAN,Thyroid Papillary Carcinoma - Classical/usual,-0.04796609379306081,Low Risk
+TCGA-ET-A2N0,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),0.13166395922005336,High Risk
+TCGA-ET-A2N1,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.04877635155608655,Low Risk
+TCGA-ET-A39J,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05450980752754767,Low Risk
+TCGA-ET-A39L,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,-0.05552451777393788,Low Risk
+TCGA-ET-A39M,MALE,WHITE,Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.048157034363309294,Low Risk
+TCGA-ET-A39N,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04250608436651172,High Risk
+TCGA-ET-A39O,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.0586503463841912,Low Risk
+TCGA-ET-A39R,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.04149573143097887,High Risk
+TCGA-ET-A39S,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04615462174574186,High Risk
+TCGA-ET-A39T,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.03724427573063147,High Risk
+TCGA-ET-A3BN,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.0474075976889174,Low Risk
+TCGA-ET-A3BP,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04212433668087209,High Risk
+TCGA-ET-A3BQ,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.03104492774611082,High Risk
+TCGA-ET-A3BS,MALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,0.3158760254143607,High Risk
+TCGA-ET-A3BU,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.0465303802963631,High Risk
+TCGA-ET-A3BV,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05150065784759575,Low Risk
+TCGA-ET-A3BW,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.051469076006056255,Low Risk
+TCGA-ET-A3BX,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.050551712447259214,Low Risk
+TCGA-ET-A3DO,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),0.1654013098299864,High Risk
+TCGA-ET-A3DP,FEMALE,BLACK OR AFRICAN AMERICAN,Thyroid Papillary Carcinoma - Classical/usual,-0.04448049195093964,High Risk
+TCGA-ET-A3DQ,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.03360611617555472,High Risk
+TCGA-ET-A3DR,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04732831843035784,Low Risk
+TCGA-ET-A3DS,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.031545699236506464,High Risk
+TCGA-ET-A3DT,FEMALE,WHITE,Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.05859196990981533,Low Risk
+TCGA-ET-A3DV,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.02554226170825786,High Risk
+TCGA-ET-A3DW,MALE,ASIAN,Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.04820944017587743,Low Risk
+TCGA-ET-A40P,FEMALE,WHITE,Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features),-0.031847039285846764,High Risk
+TCGA-ET-A40Q,MALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.03098566237533406,High Risk
+TCGA-ET-A4KN,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.03260760384833044,High Risk
+TCGA-ET-A4KQ,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.14830021655654144,High Risk
+TCGA-FE-A230,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04197256517456353,High Risk
+TCGA-FE-A232,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.0474113154313942,Low Risk
+TCGA-FE-A233,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.14472854754265357,High Risk
+TCGA-FE-A234,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.046320426090554354,High Risk
+TCGA-FE-A235,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05733661156549562,Low Risk
+TCGA-FE-A236,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.04330280610916441,High Risk
+TCGA-FE-A237,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.1480764738765106,High Risk
+TCGA-FE-A238,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.0402603743200025,High Risk
+TCGA-FE-A239,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04855537935218943,Low Risk
+TCGA-FE-A23A,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04897563553861265,Low Risk
+TCGA-FE-A3PB,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.056494491488075366,Low Risk
+TCGA-FE-A3PC,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.04610031547608436,High Risk
+TCGA-FE-A3PD,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.030579949762956513,High Risk
+TCGA-FK-A3S3,FEMALE,BLACK OR AFRICAN AMERICAN,Thyroid Papillary Carcinoma - Classical/usual,-0.049195954839997585,Low Risk
+TCGA-FK-A3SB,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.04987219442742692,Low Risk
+TCGA-FK-A3SD,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.0403823162457362,High Risk
+TCGA-FK-A3SE,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.05263319472395919,Low Risk
+TCGA-FK-A3SG,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05081697238786011,Low Risk
+TCGA-FK-A3SH,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04739238805445486,Low Risk
+TCGA-FY-A3BL,MALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),0.20801281206262653,High Risk
+TCGA-FY-A3I4,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05295782855631675,Low Risk
+TCGA-FY-A3I5,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04242756099242151,High Risk
+TCGA-FY-A3NM,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.059634220220964436,Low Risk
+TCGA-FY-A3NN,FEMALE,[Not Available],Thyroid Papillary Carcinoma - Classical/usual,-0.04894007003577398,Low Risk
+TCGA-FY-A3NP,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.5982128690687516,High Risk
+TCGA-FY-A3ON,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.043700827930233124,High Risk
+TCGA-FY-A3R8,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05679332686022714,Low Risk
+TCGA-FY-A3R9,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.034635287123927216,High Risk
+TCGA-FY-A3RA,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.04589927365714078,High Risk
+TCGA-FY-A3TY,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05152050970900788,Low Risk
+TCGA-FY-A3WA,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.059779298484294925,Low Risk
+TCGA-FY-A3YR,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.03863752143665606,High Risk
+TCGA-FY-A40K,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.054290407892414426,Low Risk
+TCGA-FY-A40M,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.3251478923481102,High Risk
+TCGA-FY-A40N,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.06475362013990678,Low Risk
+TCGA-FY-A76V,MALE,BLACK OR AFRICAN AMERICAN,Thyroid Papillary Carcinoma - Classical/usual,-0.05311005374869838,Low Risk
+TCGA-IM-A3EB,FEMALE,WHITE,"Other, specify",-0.04553460983097001,High Risk
+TCGA-IM-A3ED,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.05578540368616521,Low Risk
+TCGA-IM-A41Y,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.0468756059317592,High Risk
+TCGA-IM-A41Z,FEMALE,WHITE,"Other, specify",-0.054998220223952385,Low Risk
+TCGA-IM-A420,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.03267772369564676,High Risk
+TCGA-IM-A4EB,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04643718987236198,High Risk
+TCGA-J8-A3NZ,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04860470472768075,Low Risk
+TCGA-J8-A3O0,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.10413422826974812,High Risk
+TCGA-J8-A3O1,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.03374369750769208,High Risk
+TCGA-J8-A3YD,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04737866610920112,Low Risk
+TCGA-J8-A3YE,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04269192858231344,High Risk
+TCGA-J8-A3YF,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.03591886220135473,High Risk
+TCGA-J8-A3YG,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.034127250580970464,High Risk
+TCGA-J8-A3YH,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05222397891708896,Low Risk
+TCGA-J8-A42S,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05711698627661545,Low Risk
+TCGA-J8-A4HW,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.043764061668156266,High Risk
+TCGA-KS-A41F,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04774036834906267,Low Risk
+TCGA-KS-A41I,FEMALE,WHITE,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.04642106289374495,High Risk
+TCGA-KS-A41J,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.020457737583704096,High Risk
+TCGA-KS-A41L,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.055629627171609346,Low Risk
+TCGA-KS-A4I7,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.04839319165947653,Low Risk
+TCGA-KS-A4I9,FEMALE,BLACK OR AFRICAN AMERICAN,Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned),-0.05336327694641506,Low Risk
+TCGA-KS-A4IB,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.04630709657247718,High Risk
+TCGA-KS-A4ID,FEMALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,0.06014514791241523,High Risk
+TCGA-L6-A4EP,FEMALE,ASIAN,Thyroid Papillary Carcinoma - Classical/usual,-0.041686131374684646,High Risk
+TCGA-L6-A4EQ,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.05239305137100336,Low Risk
+TCGA-MK-A4N6,MALE,WHITE,Thyroid Papillary Carcinoma - Classical/usual,-0.053771361760389165,Low Risk
+TCGA-MK-A4N7,FEMALE,WHITE,NA,-0.04814587254806809,Low Risk
+TCGA-MK-A4N9,FEMALE,WHITE,NA,-0.05688300669148018,Low Risk

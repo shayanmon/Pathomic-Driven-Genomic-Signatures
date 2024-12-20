@@ -1,0 +1,43 @@
+---
+title: "Thyroid QuRiS Analysis"
+output: html_document
+date: "2023-03-21"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readxl)
+library(readr)
+library(dplyr)
+library(forcats)
+```
+
+## Load the data
+
+
+```{r load}
+ptc_nuc_feats <- readRDS("~/Documents/CCIPD/Thyroid/ptc_nuc_feats.rds")
+riskScores_147patients <- read_excel("~/Documents/CCIPD/Thyroid/riskScores_147patients.xlsx")
+TCGA_clinical_removeThyroiditis <- read_csv("~/Documents/CCIPD/Thyroid/TCGA_clinical_removeThyroiditis.csv")
+TCGA_clinical_removeThyroiditis <- TCGA_clinical_removeThyroiditis[1:507,]
+```
+
+## Cleaning up datasets
+
+You can also embed plots, for example:
+
+```{r cleanup}
+TCGA_clinical_removeThyroiditis <- TCGA_clinical_removeThyroiditis %>%
+  select(bcr_patient_barcode,gender,race,tumor_status,vital_status,histologic_diagnosis,ajcc_tumor_pathologic_pt,ajcc_nodes_pathologic_pn,ajcc_metastasis_pathologic_pm,ajcc_pathologic_tumor_stage) %>%
+  rename(subj_id = bcr_patient_barcode, histotype = histologic_diagnosis, t_stage = ajcc_tumor_pathologic_pt, n_stage = ajcc_nodes_pathologic_pn, m_stage = ajcc_metastasis_pathologic_pm) %>%
+  mutate(histotype = factor(histotype)) %>%
+  mutate(histotype = fct_recode(histotype, "Classical" = "Thyroid Papillary Carcinoma - Classical/usual", "Follicular" = "Thyroid Papillary Carcinoma - Follicular (>= 99% follicular patterned)", "Tall Cell" = "Thyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features)"))
+```
+
+```{r merge}
+temp <- merge(TCGA_clinical_removeThyroiditis,riskScores_147patients)
+temp <- temp %>%
+  select(subj_id,QuRiS,risk_group,histotype)
+
+write.csv(temp, "riskScoresWithHistotypes.csv", row.names = FALSE)
+```

@@ -1,0 +1,92 @@
+---
+title: "MultivariableAnalysis_Thyroid"
+author: "Shayan Monabbati"
+date: "2023-09-29"
+output: html_document
+---
+
+```{r load_packages}
+install.packages("forestplot")
+library(forestplot)
+library(ggplot2)  # For data visualization
+library(dplyr)    # For data manipulation
+library(corrplot) # For correlation plot
+```
+
+```{r load_data}
+mv_table <- read_csv("mv_table.csv",show_col_types = FALSE)
+
+```
+
+```{r mv_analysis}
+time = improved_mvtable$time
+event = improved_mvtable$status
+
+# Create a Cox proportional hazards model
+mv_cox <- coxph(Surv(time, event) ~ QuRiS + gender + race + histotype + ajcc_pathologic_tumor_stage, data = improved_mvtable)
+
+# Get the coefficients and confidence intervals
+coefficients <- exp(coef(mv_cox))
+conf_intervals <- exp(confint(mv_cox))
+summary_cox <- summary(mv_cox)
+p_values <- summary_cox$coefficients[, "Pr(>|z|)"]
+
+
+```
+
+
+```{r forest_plot}
+# Create a dataframe with coefficient names, coefficients, and confidence intervals
+forest_data <- data.frame(
+  Variables = rownames(conf_intervals),
+  mean = coefficients,
+  lower = conf_intervals[, 1],
+  upper = conf_intervals[, 2],
+  P_value = p_values
+)
+
+forest_data <- forest_data[!rownames(forest_data) == "race[Not Evaluated]", ]
+forest_data <- forest_data[!rownames(forest_data) == "histotypeThyroid Papillary Carcinoma - Tall Cell (>= 50% tall cell features)", ]
+forest_data <- forest_data[!rownames(forest_data) == "race[Unknown]", ]
+forest_data <- forest_data[!rownames(forest_data) == "raceBLACK OR AFRICAN AMERICAN", ]
+
+
+# Sort the dataframe by p-values if needed
+forest_data <- forest_data[order(forest_data$P_value), ]
+
+rownames(forest_data) <- c("Race_AmericanIndian","Histotype_C","Race_White","AJCC_Stage3","QuRiS","Race_Asian","Histotype_FV","AJCC_Stage2","Gender_Male")
+forest_data$Variables = rownames(forest_data)
+
+
+# Create the forest plot
+forestplot(
+  forest_data$Variables,
+  forest_data$mean,
+  lower = forest_data$lower,
+  upper = forest_data$upper,
+  title = "Forest Plot of Coefficients",
+  xlab = "Coefficient Value",
+  clip = c(-2.17, 6.93),
+  col = fpColors(box = "black", lines = "black", summary = "black"),
+  colgap = unit(0.5, "cm")  # Adjust column gap if needed
+)
+
+forest_plot <- ggplot(forest_data, aes(x = mean, y = Variables)) +
+  geom_point(aes(color = P_value), size = 3) +
+  geom_errorbarh(aes(xmin = mean - lower, xmax = mean + upper), height = 0) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray") +
+  labs(x = "Hazard Ratio", y = "Predictorsxf") +
+  scale_color_gradient(low = "blue", high = "red", limits = c(0, 0.1)) +  # Set the color scale limits
+  theme_minimal()
+
+formatted_c_index <- sprintf("%.4f", summary_cox$concordance[1])
+c_index_annotation <- paste("Concordance (C-index):", formatted_c_index)  # Replace c_index_value with the actual C-index value
+
+forest_plot <- forest_plot + xlim(-1, 17.25) + annotate("text", x = 1, y = 4.5, label = c_index_annotation, hjust = 0)
+
+# Print the forest plot
+print(forest_plot)
+# Save the forest plot as an image file (e.g., PNG)
+# ggsave("forest_plot.png", width = 8, height = 6, dpi = 300)
+
+```
